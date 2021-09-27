@@ -4,12 +4,15 @@ import ProductRow from './ProductRow'
 
 
 export default function ProductTable(props) {
-  const { products } = props;
+  const { products, inStockOnly } = props;
 
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
+    if (inStockOnly && !product.stocked) {
+      return;
+    }
     if (product.category !== lastCategory) {
       rows.push(
         <ProductCategoryRow
@@ -21,8 +24,7 @@ export default function ProductTable(props) {
     rows.push(
       <ProductRow
         product={product}
-        key={product.name}
-      />
+        key={product.name} />
     )
     lastCategory = product.category;
   })

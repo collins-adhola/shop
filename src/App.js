@@ -2,6 +2,7 @@
 import logo from './logo.svg';
 import './App.css';
 import FilterableProductTable from './Components/FilterableProductTable';
+import ProductCategoryRow from './Components/ProductCategoryRow';
 
  
 const PRODUCTS = [
@@ -17,6 +18,7 @@ const PRODUCTS = [
 function App() {
   return (
     <FilterableProductTable products={PRODUCTS} />
+   
   );
 }
 
