@@ -4,12 +4,15 @@ import ProductRow from './ProductRow'
 
 
 export default function ProductTable(props) {
-  const { products, inStockOnly } = props;
+  const { products, inStockOnly, filterText} = props;
 
   const rows = [];
   let lastCategory = null;
 
   products.forEach((product) => {
+    if (product.name.indexOf(filterText) === -1) {
+      return;
+    }
     if (inStockOnly && !product.stocked) {
       return;
     }
